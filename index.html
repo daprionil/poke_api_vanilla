@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poke Api - View Elements and Searching</title>
+    <link rel="stylesheet" href="./styles/css/index.css">
+</head>
+<body>
+    <header class="top_page_search">
+        <div class="top_header_element">
+            <img class="image_icon" src="./sources/images/poke_icon.png" alt="">
+        </div>
+        <div class="mid_header_element">
+            <div class="mid_header_element_search_ctn">
+                <form class="form_search" id="form_search">
+                    <div class="ctn_text_input">
+                        <input type="text" placeholder="Buscar Pokemón" id="searchingInput">
+                    </div>
+                    <div class="ctn_submit_form">
+                        <input type="submit" class="btn" value="Buscar" id="submitForm">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </header>
+    <main class="mid_page_pokemons">
+        <div class="top_main_page">
+            <p>Resultados de la búsqueda</p>
+        </div>
+        <div class="ctn_all_cards_pokemon" id="pokemons_list">
+            <div class="card_pokemon">
+                <div class="top_card_pokemon">
+                    <div class="card_img">
+                        <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/905.png" alt="">
+                    </div>
+                </div>
+                <div class="bottom_card_pokemon">
+                    <p><strong>Pokemón:</strong> Bulbasaur</p>
+                    <p><b>Stat: </b> Bulbasaur</p>
+                    <p><b>Nro Habilities: </b> Bulbasaur</p>
+                </div>
+            </div>
+            <div class="card_pokemon">
+                <div class="top_card_pokemon">
+                    <div class="card_img">
+                        <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/905.png" alt="">
+                    </div>
+                </div>
+                <div class="bottom_card_pokemon">
+                    <p><strong>Pokemón:</strong> Bulbasaur</p>
+                    <p><b>Stat: </b> Bulbasaur</p>
+                    <p><b>Nro Habilities: </b> Bulbasaur</p>
+                </div>
+            </div>
+            <div class="card_pokemon">
+                <div class="top_card_pokemon">
+                    <div class="card_img">
+                        <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/905.png" alt="">
+                    </div>
+                </div>
+                <div class="bottom_card_pokemon">
+                    <p><strong>Pokemón:</strong> Bulbasaur</p>
+                    <p><b>Stat: </b> Bulbasaur</p>
+                    <p><b>Nro Habilities: </b> Bulbasaur</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="ctn_paginator_page">
+            <div class="ctn_btns_interface">
+                <button class="previous_page" id="previous_btn_page"><</button>
+                <button class="next_page" id="next_btn_page">></button>
+            </div>
+            <ul class="ctn_btns_paginator" id="box_paginator">
+                <li class="btn_paginator">
+                    <button>1</button>
+                </li>
+                <li class="btn_paginator">
+                    <button>2</button>
+                </li>
+                <li class="btn_paginator">
+                    <button>3</button>
+                </li>
+                <li class="btn_paginator">
+                    <button>4</button>
+                </li>
+                <li class="btn_paginator">
+                    <button>5</button>
+                </li>
+                <li class="btn_paginator">
+                    <button>6</button>
+                </li>
+                <li class="btn_paginator">
+                    <button>7</button>
+                </li>
+                <li class="btn_paginator">
+                    <button>8</button>
+                </li>
+                <li class="btn_paginator">
+                    <button>9</button>
+                </li>
+                <li class="btn_paginator">
+                    <button>10</button>
+                </li>
+                <li class="btn_paginator">
+                    <button>11</button>
+                </li>
+                <li class="btn_paginator">
+                    <button>12</button>
+                </li>
+                <li class="btn_paginator">
+                    <button>13</button>
+                </li>
+                <li class="btn_paginator">
+                    <button>14</button>
+                </li>
+                <li class="btn_paginator">
+                    <button>15</button>
+                </li>
+            </ul>
+        </div>
+    </footer>
+    <script src="./js/class/App.js" type="module"></script>
+</body>
+</html>
