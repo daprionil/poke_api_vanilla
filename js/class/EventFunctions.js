@@ -17,5 +17,10 @@ export class EventFunctions{
     //Generate Interaction to searching form
     static validateSearching(evt){
         evt.preventDefault();
+
+        /**
+         * Valida
+         * Llama al mediator en displayPokemonSearch
+         */
     };
 };

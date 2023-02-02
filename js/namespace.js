@@ -1,12 +1,13 @@
 const objValues  = {
     functions:{
         //Set values in the NameSpace
-        setGlobalValues:function(data){
-            const pokemons = data.results;
+        setGlobalValues:function(allPokemons){
+            const pokemons = allPokemons.results;
 
             this.setPokemosValue(pokemons);
             this.setPagesValue(pokemons);
         },
+
         //Set the value to the all Pakemons in Page
         setPokemosValue(pokemons){
             objValues.pokemons[Symbol.iterator] = function*(){
@@ -15,7 +16,7 @@ const objValues  = {
                     yield [pokemon.name,pokemon];
                 };
             };
-            
+
             objValues.pokemons = new Map([...objValues.pokemons].sort(() => Math.random() - 0.5));
         },
         //Set Page Range and Amount
@@ -31,7 +32,7 @@ const objValues  = {
             for(let i = nPages - 1; i >= 0; i--){
                 const val = i*nPerPage,
                       nextVal = (val + 20) > lenList ? lenList : (val + 20);
-                arrPages.unshift([val, nextVal - val]);
+                arrPages.unshift([val, nextVal]);
             }
             objValues.pages = arrPages;
         }

@@ -26,7 +26,7 @@ class CardPokemon extends CreateHtml{
 
         const ctnExperience = document.createElement('DIV');
         ctnExperience.classList.add('ctn_base_experience_card_pokemon',type);
-        ctnExperience.innerHTML = `<p>${base_experience}</p>`;
+        ctnExperience.innerHTML = `<p>${base_experience ?? '&#8734;'}</p>`;
 
         const topCardPokemon = document.createElement('DIV');
         topCardPokemon.classList.add('top_card_pokemon',type);
@@ -64,7 +64,7 @@ class CardPokemon extends CreateHtml{
 
         const ctnBtnActionDisplayPokemon = document.createElement('DIV');
         ctnBtnActionDisplayPokemon.classList.add('ctn_btn_action_show_pokemon',type);
-        ctnBtnActionDisplayPokemon.onclick = () => console.log(pokeName);
+        ctnBtnActionDisplayPokemon.onclick = () => console.log({pokeName,id});
         ctnBtnActionDisplayPokemon.innerHTML = `<button class="btn_display_pokemon">Display</button>`;
 
         //Adding Element to Bottom
@@ -117,9 +117,9 @@ class BtnPaginator extends CreateHtml{
 
         const el = document.createElement('LI');
         el.classList.add('btn_paginator');
-        el.dataset.path_url = `?offset=${range[0]}&limit=${range[1]}`;
         el.onclick = () => {
-            Mediator.requestMediator({type:'displayPokemons'})({pathPrefer:el.dataset.path_url});
+            console.log(range);
+            Mediator.requestMediator({type:'displayPokemons'})({range});
         }
         
         const btn = document.createElement('BUTTON');
@@ -130,3 +130,5 @@ class BtnPaginator extends CreateHtml{
         return el;
     };
 };
+
+//Crear Componente modal, , Tomar los valores desde la Card para el Modal

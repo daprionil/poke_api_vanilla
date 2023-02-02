@@ -7,29 +7,27 @@ export default class mediator{
         return ({
             //Set global values in NameSpace
             setMainValues: async function(){
-                const data = await Api.getAllPokemons();
+                const pokemons = await Api.getAllPokemons();
                 
                 //Set values in Namespace
-                Namespace.functions.setGlobalValues(data);
+                Namespace.functions.setGlobalValues(pokemons);
             },
             displayPagination: async function(){
                 //Show all buttons in box pagination element's
                 UI.printAllButtonsPagination(Namespace.pages);
             },
-            displayPokemons: async function({pathPrefer = '/'}){
+            displayPokemons: async function({range = [0,20]}){
                 //Llamar a UI para generar las Cards
-                //const pokemons = await Api.getPokemonsPerPage();
-                const url = new URLSearchParams(pathPrefer);
-                const params = [url.get('offset','limit')];
-                console.log({params,pathPrefer});
+                const [start, end] = range;
+                //Get range pokemons in Namaspace.pokemons
+                const mapResults = [...Namespace.pokemons].map(([,pokemon]) => pokemon);
+                const pokemonsMap = mapResults.slice(start,end);
 
-                const {results} = await Api.getPagePokemons({pathPrefer});
-                const map = [...Namespace.pokemons].slice();
-                const pokemons = await Api.getArrPokemonsPerPage(results,map);
-
+                const pokemons = await Api.getArrPokemonsPerPage(pokemonsMap);
                 //Display Cards Pokemon
                 UI.printPagePokemons({pokemons});
             },
+            //Crear método para Mostrar modal y sus contenido
         })[type];
     };
 };

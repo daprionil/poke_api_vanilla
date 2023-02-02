@@ -1,5 +1,3 @@
-//?offset=20&limit=20"
-
 const baseUrlApi = 'https://pokeapi.co/api/v2/pokemon';
 
 export default class Api{
@@ -15,8 +13,6 @@ export default class Api{
         };
     };
 
-
-
     //Get a Pokemon in Api Web
     static async getAPokemon({poke = '',pathPrefer = null}){
         try {
@@ -28,21 +24,8 @@ export default class Api{
         }; 
     };
 
-    //Get a Pokemons per page
-    static async getPagePokemons({pathPrefer}){
-        try{
-            const response = await fetch(`${baseUrlApi}${pathPrefer}`);
-            const data = await response.json();
-
-            return data;
-        }catch(err){
-            console.log(err);
-        };
-    };
-
     //Get all Pokemons per Array Page's
-    static async getArrPokemonsPerPage(results,map = ''){
-        console.log({results,map});
+    static async getArrPokemonsPerPage(results){
         //Generate a array with all url to fetch for pokemon
         const arrPokemons = (function*(){
             for(let i = 0; i < results.length; i++){

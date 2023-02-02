@@ -3,11 +3,11 @@ import * as sel from '../selectors.js';
 
 export default class UI{
     //Print all buttons in the document <-- mediator
-    static printAllButtonsPagination(data){
+    static printAllButtonsPagination(pages){
         const frag = document.createDocumentFragment();
 
         //Iterate all elements range
-        data.forEach((range,i) => {
+        pages.forEach((range,i) => {
             const element = CreateHtml.create({
                 type:'btnPage',
                 body:{range,i}
