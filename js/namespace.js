@@ -15,7 +15,8 @@ const objValues  = {
                     yield [pokemon.name,pokemon];
                 };
             };
-            objValues.pokemons = new Map([...objValues.pokemons]);
+            
+            objValues.pokemons = new Map([...objValues.pokemons].sort(() => Math.random() - 0.5));
         },
         //Set Page Range and Amount
         setPagesValue(pokemons){
@@ -33,7 +34,6 @@ const objValues  = {
                 arrPages.unshift([val, nextVal - val]);
             }
             objValues.pages = arrPages;
-            console.log(objValues.pages);
         }
     },
     pokemons: new Map(),

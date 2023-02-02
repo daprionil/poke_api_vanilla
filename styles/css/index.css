@@ -1,3 +1,7 @@
+:root {
+  --gap_size:7px;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -33,7 +37,7 @@ body header.top_page_search {
   grid-template-columns: 0.3fr 0.7fr;
   gap: 10px;
   align-items: center;
-  z-index: 1;
+  z-index: 100;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 body header.top_page_search .top_header_element .image_icon {
@@ -71,6 +75,7 @@ body main.mid_page_pokemons .top_main_page::after {
   left: 0;
 }
 body main.mid_page_pokemons .ctn_all_cards_pokemon {
+  margin-bottom: 80px;
   padding: 10px 20px;
   width: 100%;
   display: grid;
@@ -83,9 +88,85 @@ body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
   border-radius: 10%;
   height: 350px;
+  position: relative;
   display: grid;
   grid-template-rows: 0.6fr 0.4fr;
   overflow: hidden;
+}
+body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .ctn_base_experience_card_pokemon {
+  position: absolute;
+  border: 2px solid white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  filter: grayscale(30%);
+  border-radius: 50%;
+  aspect-ratio: 1/1;
+  padding: 7px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 3%;
+  right: 5%;
+  z-index: 1;
+}
+body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .ctn_base_experience_card_pokemon.normal {
+  background: #FFBD6A;
+}
+body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .ctn_base_experience_card_pokemon.fighting {
+  background: #8f0000;
+}
+body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .ctn_base_experience_card_pokemon.flying {
+  background: #275BFF;
+}
+body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .ctn_base_experience_card_pokemon.poison {
+  background: #973CE2;
+}
+body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .ctn_base_experience_card_pokemon.ground {
+  background: #D9E155;
+}
+body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .ctn_base_experience_card_pokemon.rock {
+  background: #A97934;
+}
+body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .ctn_base_experience_card_pokemon.bug {
+  background: #E2EB27;
+}
+body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .ctn_base_experience_card_pokemon.ghost {
+  background: #280085;
+}
+body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .ctn_base_experience_card_pokemon.steel {
+  background: #717171;
+}
+body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .ctn_base_experience_card_pokemon.fire {
+  background: #FF1717;
+}
+body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .ctn_base_experience_card_pokemon.water {
+  background: #1D95FF;
+}
+body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .ctn_base_experience_card_pokemon.grass {
+  background: #18E815;
+}
+body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .ctn_base_experience_card_pokemon.electric {
+  background: #FCFF25;
+}
+body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .ctn_base_experience_card_pokemon.psychic {
+  background: #F159EF;
+}
+body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .ctn_base_experience_card_pokemon.ice {
+  background: #00B6FF;
+}
+body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .ctn_base_experience_card_pokemon.dark {
+  background: #553C0E;
+}
+body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .ctn_base_experience_card_pokemon.dragon {
+  background: #7C33FA;
+}
+body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .ctn_base_experience_card_pokemon.fairy {
+  background: #ED7AFC;
+}
+body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .ctn_base_experience_card_pokemon.unknown {
+  background: #C9C9C9;
+}
+body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .ctn_base_experience_card_pokemon.shadow {
+  background: #613B81;
 }
 body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .top_card_pokemon {
   position: relative;
@@ -102,6 +183,76 @@ body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .top_card_pokem
 body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .top_card_pokemon .card_img img {
   max-width: 170px;
 }
+body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .top_card_pokemon .info-card {
+  position: absolute;
+  bottom: -5%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  border-radius: 20px;
+  padding: 2px 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .top_card_pokemon.normal::before {
+  background: #FFBD6A;
+}
+body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .top_card_pokemon.fighting::before {
+  background: #8f0000;
+}
+body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .top_card_pokemon.flying::before {
+  background: #275BFF;
+}
+body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .top_card_pokemon.poison::before {
+  background: #973CE2;
+}
+body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .top_card_pokemon.ground::before {
+  background: #D9E155;
+}
+body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .top_card_pokemon.rock::before {
+  background: #A97934;
+}
+body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .top_card_pokemon.bug::before {
+  background: #E2EB27;
+}
+body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .top_card_pokemon.ghost::before {
+  background: #280085;
+}
+body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .top_card_pokemon.steel::before {
+  background: #717171;
+}
+body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .top_card_pokemon.fire::before {
+  background: #FF1717;
+}
+body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .top_card_pokemon.water::before {
+  background: #1D95FF;
+}
+body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .top_card_pokemon.grass::before {
+  background: #18E815;
+}
+body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .top_card_pokemon.electric::before {
+  background: #FCFF25;
+}
+body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .top_card_pokemon.psychic::before {
+  background: #F159EF;
+}
+body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .top_card_pokemon.ice::before {
+  background: #00B6FF;
+}
+body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .top_card_pokemon.dark::before {
+  background: #553C0E;
+}
+body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .top_card_pokemon.dragon::before {
+  background: #7C33FA;
+}
+body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .top_card_pokemon.fairy::before {
+  background: #ED7AFC;
+}
+body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .top_card_pokemon.unknown::before {
+  background: #C9C9C9;
+}
+body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .top_card_pokemon.shadow::before {
+  background: #613B81;
+}
 body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .top_card_pokemon::before {
   content: "";
   position: absolute;
@@ -112,17 +263,136 @@ body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .top_card_pokem
 }
 body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .bottom_card_pokemon {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 0.8fr 0.4fr;
   padding: 10px;
   align-items: center;
 }
-body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .bottom_card_pokemon p {
-  text-align: center;
-  padding: 5px;
+body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .bottom_card_pokemon .ctn_left_card_pokemon {
   border-right: 2px solid black;
 }
-body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .bottom_card_pokemon p:last-child {
-  border: none;
+body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .bottom_card_pokemon .ctn_left_card_pokemon .ctn_stats_pokemon {
+  padding: 0 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gap_size);
+}
+body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .bottom_card_pokemon .ctn_left_card_pokemon .ctn_stats_pokemon .item_stat {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: var(--gap_size);
+  font-size: 0.9rem;
+}
+body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .bottom_card_pokemon .ctn_left_card_pokemon .ctn_stats_pokemon .item_stat .stat_number {
+  height: 40px;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .bottom_card_pokemon .ctn_right_card_pokemon {
+  height: 100%;
+  padding: 10px;
+}
+body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .bottom_card_pokemon .ctn_right_card_pokemon .ctn_info_actions_card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  text-align: center;
+}
+body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .bottom_card_pokemon .ctn_right_card_pokemon .ctn_info_actions_card .ctn_type_pokemon * {
+  display: list-item;
+  list-style: none;
+}
+body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .bottom_card_pokemon .ctn_right_card_pokemon .ctn_info_actions_card .ctn_type_pokemon .title_type {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  border-radius: 30px;
+}
+body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .bottom_card_pokemon .ctn_right_card_pokemon .ctn_info_actions_card .ctn_type_pokemon .value_type {
+  margin-top: 5px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: white;
+  text-shadow: 0px 2px 0px black, 2px 0px 0px black, -2px 0px 0px black, 0px -2px 0px black;
+}
+body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .bottom_card_pokemon .ctn_right_card_pokemon .ctn_info_actions_card .ctn_btn_action_show_pokemon {
+  background: red;
+  border-radius: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .bottom_card_pokemon .ctn_right_card_pokemon .ctn_info_actions_card .ctn_btn_action_show_pokemon.normal {
+  background: #FFBD6A;
+}
+body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .bottom_card_pokemon .ctn_right_card_pokemon .ctn_info_actions_card .ctn_btn_action_show_pokemon.fighting {
+  background: #8f0000;
+}
+body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .bottom_card_pokemon .ctn_right_card_pokemon .ctn_info_actions_card .ctn_btn_action_show_pokemon.flying {
+  background: #275BFF;
+}
+body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .bottom_card_pokemon .ctn_right_card_pokemon .ctn_info_actions_card .ctn_btn_action_show_pokemon.poison {
+  background: #973CE2;
+}
+body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .bottom_card_pokemon .ctn_right_card_pokemon .ctn_info_actions_card .ctn_btn_action_show_pokemon.ground {
+  background: #D9E155;
+}
+body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .bottom_card_pokemon .ctn_right_card_pokemon .ctn_info_actions_card .ctn_btn_action_show_pokemon.rock {
+  background: #A97934;
+}
+body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .bottom_card_pokemon .ctn_right_card_pokemon .ctn_info_actions_card .ctn_btn_action_show_pokemon.bug {
+  background: #E2EB27;
+}
+body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .bottom_card_pokemon .ctn_right_card_pokemon .ctn_info_actions_card .ctn_btn_action_show_pokemon.ghost {
+  background: #280085;
+}
+body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .bottom_card_pokemon .ctn_right_card_pokemon .ctn_info_actions_card .ctn_btn_action_show_pokemon.steel {
+  background: #717171;
+}
+body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .bottom_card_pokemon .ctn_right_card_pokemon .ctn_info_actions_card .ctn_btn_action_show_pokemon.fire {
+  background: #FF1717;
+}
+body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .bottom_card_pokemon .ctn_right_card_pokemon .ctn_info_actions_card .ctn_btn_action_show_pokemon.water {
+  background: #1D95FF;
+}
+body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .bottom_card_pokemon .ctn_right_card_pokemon .ctn_info_actions_card .ctn_btn_action_show_pokemon.grass {
+  background: #18E815;
+}
+body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .bottom_card_pokemon .ctn_right_card_pokemon .ctn_info_actions_card .ctn_btn_action_show_pokemon.electric {
+  background: #FCFF25;
+}
+body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .bottom_card_pokemon .ctn_right_card_pokemon .ctn_info_actions_card .ctn_btn_action_show_pokemon.psychic {
+  background: #F159EF;
+}
+body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .bottom_card_pokemon .ctn_right_card_pokemon .ctn_info_actions_card .ctn_btn_action_show_pokemon.ice {
+  background: #00B6FF;
+}
+body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .bottom_card_pokemon .ctn_right_card_pokemon .ctn_info_actions_card .ctn_btn_action_show_pokemon.dark {
+  background: #553C0E;
+}
+body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .bottom_card_pokemon .ctn_right_card_pokemon .ctn_info_actions_card .ctn_btn_action_show_pokemon.dragon {
+  background: #7C33FA;
+}
+body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .bottom_card_pokemon .ctn_right_card_pokemon .ctn_info_actions_card .ctn_btn_action_show_pokemon.fairy {
+  background: #ED7AFC;
+}
+body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .bottom_card_pokemon .ctn_right_card_pokemon .ctn_info_actions_card .ctn_btn_action_show_pokemon.unknown {
+  background: #C9C9C9;
+}
+body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .bottom_card_pokemon .ctn_right_card_pokemon .ctn_info_actions_card .ctn_btn_action_show_pokemon.shadow {
+  background: #613B81;
+}
+body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .bottom_card_pokemon .ctn_right_card_pokemon .ctn_info_actions_card .ctn_btn_action_show_pokemon .btn_display_pokemon {
+  background: transparent;
+  color: white;
+  font-weight: 600;
+  transition: transform 0.3s ease;
+  text-rendering: optimizeSpeed;
+}
+body main.mid_page_pokemons .ctn_all_cards_pokemon .card_pokemon .bottom_card_pokemon .ctn_right_card_pokemon .ctn_info_actions_card .ctn_btn_action_show_pokemon .btn_display_pokemon:hover {
+  transform: scale(1.2);
 }
 body footer {
   position: fixed;
@@ -137,7 +407,7 @@ body footer .ctn_paginator_page {
 }
 body footer .ctn_paginator_page .ctn_btns_interface {
   position: relative;
-  max-width: 400px;
+  max-width: 300px;
   width: 100%;
   margin: 0 auto;
 }
@@ -162,14 +432,17 @@ body footer .ctn_paginator_page .ctn_btns_interface button.next_page {
 body footer .ctn_paginator_page .ctn_btns_paginator {
   display: flex;
   gap: 5px;
-  max-width: 400px;
+  max-width: 300px;
   width: 100%;
   margin: 0 auto;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
 }
 body footer .ctn_paginator_page .ctn_btns_paginator::-webkit-scrollbar {
-  height: 1px;
+  display: none;
+  background: transparent;
+  color: transparent;
 }
 body footer .ctn_paginator_page .ctn_btns_paginator .btn_paginator {
   display: inline-block;

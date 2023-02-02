@@ -1,4 +1,5 @@
 import * as sel from '../selectors.js';
+import Api from './Api.js';
 import { EventFunctions } from './EventFunctions.js';
 import Mediator from './Mediator.js';
 
@@ -10,7 +11,7 @@ new class App{
         //Start implements
         await Mediator.requestMediator({type:'setMainValues'})();
         await Mediator.requestMediator({type:'displayPagination'})();
-        await Mediator.requestMediator({type:'displayPokemons'})();
+        await Mediator.requestMediator({type:'displayPokemons'})({});
 
         //Form document
         sel.formSearching.addEventListener('submit', EventFunctions.validateSearching);
