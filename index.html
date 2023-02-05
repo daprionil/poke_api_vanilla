@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,7 +8,14 @@
     <title>Poke Api - View Elements and Searching</title>
     <link rel="stylesheet" href="./styles/css/index.css">
 </head>
+
 <body>
+    <aside class="ctn_modal_page" id="pokemon_modal">
+        <div class="ctn_btn_close_modal" id="btn_close_modal">
+            <button>X</button>
+        </div>
+        <div class="ctn_modal" id="modal_box"></div>
+    </aside>
     <header class="top_page_search">
         <div class="top_header_element">
             <img class="image_icon" src="./sources/images/poke_icon.png" alt="PokeApi picture">
@@ -40,6 +48,8 @@
             <ul class="ctn_btns_paginator" id="box_paginator"></ul>
         </div>
     </footer>
+
     <script src="./js/class/App.js" type="module"></script>
 </body>
+
 </html>

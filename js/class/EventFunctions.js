@@ -1,4 +1,4 @@
-import {boxPaginator} from '../selectors.js';
+import {boxPaginator,pokemonModal} from '../selectors.js';
 
 export class EventFunctions{
     //Generate Interaction to pagination buttons
@@ -22,5 +22,10 @@ export class EventFunctions{
          * Valida
          * Llama al mediator en displayPokemonSearch
          */
+    };
+    
+    //Event Toggle modal
+    static toggleModal(){
+        pokemonModal.classList.toggle('display');
     };
 };

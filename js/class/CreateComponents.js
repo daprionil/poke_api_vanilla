@@ -1,24 +1,30 @@
 import Mediator from './Mediator.js';
 
 export default class CreateHtml{
-    static create({type,body}){
+    static create({type,body:dataComponent}){
         const obj = {
-            cardPokemon: () => new CardPokemon(body),
-            btnPage: () => new BtnPaginator(body)
+            cardPokemon: () => new CardPokemon(dataComponent),
+            btnPage: () => new BtnPaginator(dataComponent),
+            modalPokemon: () => new ModalPokemon(dataComponent)
         };
 
         return obj[type]();
+    };
+
+    //Request Type Mediator
+    requestMediator({type,pokemon}){
+        Mediator.requestMediator({type})({pokemon});
     }
 };
 
 //gist
 //Create a Card element for Pokemon
 class CardPokemon extends CreateHtml{
-    constructor(body){
-        super(body);
+    constructor(dataComponent){
+        super(dataComponent);
 
-        //Data of Card Pokemon
-        const {base_experience,pokeName,sprite,stats,id,type} = body;
+        //Data of Card dataComponent
+        const {base_experience,pokeName,sprite,stats,type} = dataComponent;
 
         // Start to create Card
         const card = document.createElement('DIV');
@@ -64,7 +70,9 @@ class CardPokemon extends CreateHtml{
 
         const ctnBtnActionDisplayPokemon = document.createElement('DIV');
         ctnBtnActionDisplayPokemon.classList.add('ctn_btn_action_show_pokemon',type);
-        ctnBtnActionDisplayPokemon.onclick = () => console.log({pokeName,id});
+        ctnBtnActionDisplayPokemon.onclick = () => {
+            this.clickBtnDisplayPokemonModal({type: 'displayModal', pokemon: dataComponent});
+        };
         ctnBtnActionDisplayPokemon.innerHTML = `<button class="btn_display_pokemon">Display</button>`;
 
         //Adding Element to Bottom
@@ -107,6 +115,10 @@ class CardPokemon extends CreateHtml{
 
         return frag;
     }
+
+    clickBtnDisplayPokemonModal(data){
+        this.requestMediator(data);
+    }
 };
 
 //Create pagination element btn
@@ -118,7 +130,6 @@ class BtnPaginator extends CreateHtml{
         const el = document.createElement('LI');
         el.classList.add('btn_paginator');
         el.onclick = () => {
-            console.log(range);
             Mediator.requestMediator({type:'displayPokemons'})({range});
         }
         
@@ -132,3 +143,192 @@ class BtnPaginator extends CreateHtml{
 };
 
 //Crear Componente modal, , Tomar los valores desde la Card para el Modal
+class ModalPokemon extends CreateHtml{
+    /**
+     * name
+     * base_Experience
+     * abilities
+     * height
+     * weight
+     * type
+     */
+
+    constructor(data){
+        super(data);
+
+        const {abilities,base_experience,height,weight, types, pokeName, sprite, stats, type} = data;
+
+        const cardPokemonModal = document.createElement('DIV');
+        cardPokemonModal.classList.add('ctn_component_modal');
+
+        const topCardModalPokemon = document.createElement('DIV');
+        topCardModalPokemon.classList.add('top_component_modal', type);
+        topCardModalPokemon.innerHTML = `
+            <div class="left_top_component_modal">
+                <div class="ctn_info">
+                    <div class="ctn_pokename">
+                        <p>${pokeName}</p>
+                    </div>
+                    <div class="ctn_base_experience">
+                        <p>${base_experience ?? '&#8734;'}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="right_top_component_modal">
+                <div class="ctn_image">
+                    <img src="${sprite}" alt="${pokeName}">
+                </div>
+            </div>`;
+
+        const midCardModalPokemon = document.createElement('DIV');
+        midCardModalPokemon.classList.add('mid_component_modal');
+        midCardModalPokemon.innerHTML = `
+            <div class="ctn_mid_data_pokemon">
+                <div class="left_ctn_data">
+                    <div class="left_data_pokemon">
+                        <div class="left_data_pokemon_values">
+                            <p>${weight / 10} Kg</p>
+                        </div>
+                        <div class="left_data_pokemon_datatype">
+                            <p>Weight</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="right_ctn_data">
+                    <div class="right_data_pokemon">
+                        <div class="right_data_pokemon_values">
+                            <p>${height / 10} m</p>
+                        </div>
+                        <div class="right_data_pokemon_datatype">
+                            <p>Height</p>
+                        </div>
+                    </div>
+                </div>
+            </div>`;
+
+        const bottomCardModalPokemon = document.createElement('DIV');
+        bottomCardModalPokemon.classList.add('bottom_component_modal');
+
+        const bottomCardModalAbilities = document.createElement('DIV');
+        bottomCardModalAbilities.classList.add('ctn_abilities_pokemon');
+
+        const bottomCardModalAbilitiesTitle = document.createElement('DIV');
+        bottomCardModalAbilitiesTitle.classList.add('title_abilities');
+        bottomCardModalAbilitiesTitle.innerHTML = `<p>Abilities</p>`;
+
+        const bottomListAbilities = document.createElement('DIV');
+        bottomListAbilities.classList.add('abilities');
+        
+        const listAbilities = ((()=>{
+            const frag = document.createDocumentFragment();
+            abilities.forEach(({ability:{name}}) =>{
+                const item = document.createElement('DIV');
+                item.classList.add('item_abilitie');
+                item.innerHTML = `<p>${name}</p>`;
+
+                frag.appendChild(item);
+            });
+            return frag;
+        })());
+        
+        //Adding bottom elements
+        bottomListAbilities.appendChild(listAbilities);
+        bottomCardModalAbilities.appendChild(bottomCardModalAbilitiesTitle);
+        bottomCardModalAbilities.appendChild(bottomListAbilities);
+
+
+        const ctnOtherPokemon = document.createElement('DIV');
+        ctnOtherPokemon.classList.add('ctn_other_info_pokemon');
+
+        const ctnTypes = document.createElement('DIV');
+        ctnTypes.classList.add('ctn_types');
+        ctnTypes.innerHTML = `
+            <div class="type_title">
+                <p>Types</p>
+            </div>`;
+        
+        const ctnlistTypes = document.createElement('DIV');
+        ctnlistTypes.classList.add('ctn_types_pokemon');
+
+        const listTypes = ((() => {
+            const frag = document.createDocumentFragment();
+            types.forEach( ({type:{name}}) => {
+                const itemType = document.createElement('P');
+                itemType.textContent = name;
+                
+                frag.appendChild(itemType);
+            });
+
+            return frag;
+        })());
+        
+        //Adding types elements 
+        ctnlistTypes.appendChild(listTypes);
+        ctnTypes.appendChild(ctnlistTypes);
+
+        const ctnStatsPokemon = document.createElement('DIV');
+        ctnStatsPokemon.classList.add('ctn_stats_info_pokemon');
+        
+        const ctnlistStats = document.createElement('DIV');
+        ctnlistStats.classList.add('ctn_stats_pokemon');
+
+        const listStats = ((() => {
+            const frag = document.createDocumentFragment();
+            stats.forEach(({base_stat,stat:{name}}) => {
+                const itemStat = document.createElement('DIV');
+                itemStat.classList.add('item_stat');
+                itemStat.innerHTML = `
+                <div class="stat_number">
+                    <p>${this.typeEmojiStat(name)}</p>
+                    <p>${base_stat}</p>
+                </div>
+                <p class="name_stat">${name}</p>`;
+
+                frag.appendChild(itemStat);
+            });
+            return frag;
+        })());
+
+        ctnlistStats.appendChild(listStats);
+        ctnStatsPokemon.appendChild(ctnlistStats);
+
+        ctnOtherPokemon.appendChild(ctnTypes);
+        ctnOtherPokemon.appendChild(ctnStatsPokemon);
+
+        bottomCardModalPokemon.appendChild(bottomCardModalAbilities);
+        bottomCardModalPokemon.appendChild(ctnOtherPokemon);
+        /**
+         * <div class="ctn_other_info_pokemon">
+                <div class="ctn_types">
+                    <div class="ctn_types_pokemon">
+                        <p>Poison</p>
+                        <p>Grass</p>
+                    </div>
+                </div>
+                <div class="ctn_stats_info_pokemon">
+                    <div class="ctn_stats_pokemon">
+                        <div class="item_stat">
+                            <div class="stat_number">
+                                <p>💊</p>
+                                <p>45</p>
+                            </div>
+                            <p class="name_stat">hp</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+         */
+        //Adding elements to main ctn
+        cardPokemonModal.appendChild(topCardModalPokemon);
+        cardPokemonModal.appendChild(midCardModalPokemon);
+        cardPokemonModal.appendChild(bottomCardModalPokemon);
+
+        return cardPokemonModal;
+    };
+
+    //Select emoji for type stat
+    typeEmojiStat(name){
+        const elements = new Map([['hp','💊'],['attack','💥'],['defense','🛡️'],['speed','💨']]);
+        return elements.get(name);
+    };
+};

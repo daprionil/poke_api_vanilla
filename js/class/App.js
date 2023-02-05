@@ -1,5 +1,4 @@
 import * as sel from '../selectors.js';
-import Api from './Api.js';
 import { EventFunctions } from './EventFunctions.js';
 import Mediator from './Mediator.js';
 
@@ -19,5 +18,7 @@ new class App{
         //Add Events to Elements in document HTML
         sel.btnNextPaginator.addEventListener('click', EventFunctions.changeScrollPaginator);
         sel.btnPreviousPaginator.addEventListener('click', EventFunctions.changeScrollPaginator);
+        
+        sel.btnCloseModal.addEventListener('click', EventFunctions.toggleModal);
     };
 };

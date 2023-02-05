@@ -1,4 +1,4 @@
-import CreateHtml from "./CreateComponents.js";
+import Mediator from './Mediator.js';
 import * as sel from '../selectors.js';
 
 export default class UI{
@@ -8,10 +8,8 @@ export default class UI{
 
         //Iterate all elements range
         pages.forEach((range,i) => {
-            const element = CreateHtml.create({
-                type:'btnPage',
-                body:{range,i}
-            });
+            const dataComponent = {type:'btnPage',body:{range,i}};
+            const element = Mediator.requestMediator({type:'createComponent'})({dataComponent});
             frag.appendChild(element);
         });
         //Add buttons in box pagination
@@ -21,7 +19,7 @@ export default class UI{
     //Iterate in all Pokemons of Page
     static printPagePokemons({pokemons}){
         //Clear HTML list Pokemons
-        this.clearHtmlListPokemon();
+        this.clearHtml(sel.boxListPokemon);
 
         //Create Document Fragment
         const frag = document.createDocumentFragment();
@@ -34,16 +32,19 @@ export default class UI{
             const {type:{name:type}} = typeObj;
 
             //Pure data from pokemon
-            const dataPokemon = {
-                base_experience,
-                pokeName,
-                sprite,
-                stats: stats.filter(({stat:{name}}) => !name.includes('special')),
-                id,
-                type
+            const dataPokemon = {...pokemon,
+                ...{
+                    base_experience,
+                    pokeName,
+                    sprite,
+                    stats: stats.filter(({stat:{name}}) => !name.includes('special')),
+                    id,
+                    type
+                }
             };
 
-            const cardPokemon = CreateHtml.create({type:'cardPokemon',body: dataPokemon});
+            const dataComponent = {type:'cardPokemon',body: dataPokemon};
+            const cardPokemon = Mediator.requestMediator({type:'createComponent'})({dataComponent});
             frag.appendChild(cardPokemon);
         });
 
@@ -52,9 +53,17 @@ export default class UI{
     };
 
     //Clear all Elements of Box List Pokemon in Document
-    static clearHtmlListPokemon(){
-        while(sel.boxListPokemon.firstElementChild){
-            sel.boxListPokemon.firstElementChild.remove();
+    static clearHtml(el){
+        while(el.firstElementChild){
+            el.firstElementChild.remove();
         };
+    };
+
+    //Display Component Pokemon All Info in Modal
+    static displayPokemonModal(pokemonBox){
+        //Adding Component HTML in the Document Modal
+        this.clearHtml(sel.modalBox);
+        sel.modalBox.appendChild(pokemonBox);
+        sel.pokemonModal.classList.toggle('display');
     };
 };
