@@ -13,10 +13,10 @@ export default class Api{
         };
     };
 
-    //Get a Pokemon in Api Web
-    static async getAPokemon({poke = '',pathPrefer = null}){
+    //Get a Pokemon in Api Web - Experimental
+    static async getAPokemon({pathPrefer = null}){
         try {
-            const url = `${pathPrefer ?? baseUrlApi }/${poke}`;
+            const url = `${pathPrefer ?? baseUrlApi }`;
             const response = await fetch(url);
             return await response.json();
         } catch (err) {

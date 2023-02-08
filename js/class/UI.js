@@ -1,4 +1,5 @@
 import Mediator from './Mediator.js';
+import Namespace from '../namespace.js';
 import * as sel from '../selectors.js';
 
 export default class UI{
@@ -27,21 +28,7 @@ export default class UI{
         //Iterate over pokemons per page
         pokemons.forEach( pokemon => {
             //Get particular response data for each Pokémon
-            const {base_experience,name:pokeName,sprites:{other},stats,id,types:[typeObj]}  = pokemon;
-            const sprite = other['official-artwork'].front_default;
-            const {type:{name:type}} = typeObj;
-
-            //Pure data from pokemon
-            const dataPokemon = {...pokemon,
-                ...{
-                    base_experience,
-                    pokeName,
-                    sprite,
-                    stats: stats.filter(({stat:{name}}) => !name.includes('special')),
-                    id,
-                    type
-                }
-            };
+            const dataPokemon = Namespace.functions.getFormatDataPokemon({pokemon});
 
             const dataComponent = {type:'cardPokemon',body: dataPokemon};
             const cardPokemon = Mediator.requestMediator({type:'createComponent'})({dataComponent});
@@ -66,4 +53,14 @@ export default class UI{
         sel.modalBox.appendChild(pokemonBox);
         sel.pokemonModal.classList.toggle('display');
     };
+
+    //Paint input box
+    static paintInput(el){
+        const prop = el.style.border;
+        if(prop === ""){
+            el.style.border = "4px solid #7E0000";
+            return;
+        }
+        el.style.border = "";
+    }
 };

@@ -155,7 +155,6 @@ class ModalPokemon extends CreateHtml{
 
     constructor(data){
         super(data);
-
         const {abilities,base_experience,height,weight, types, pokeName, sprite, stats, type} = data;
 
         const cardPokemonModal = document.createElement('DIV');
@@ -218,19 +217,22 @@ class ModalPokemon extends CreateHtml{
 
         const bottomListAbilities = document.createElement('DIV');
         bottomListAbilities.classList.add('abilities');
-        
-        const listAbilities = ((()=>{
+    
+        const listAbilities = (()=>{
             const frag = document.createDocumentFragment();
-            abilities.forEach(({ability:{name}}) =>{
+
+            for(let i = 0; i < abilities.length; i++){
+                const {ability:{name:namePoke}} = abilities[i];
                 const item = document.createElement('DIV');
                 item.classList.add('item_abilitie');
-                item.innerHTML = `<p>${name}</p>`;
+                item.innerHTML = `<p>${namePoke}</p>`;
 
                 frag.appendChild(item);
-            });
+            };
+
             return frag;
-        })());
-        
+        })();
+
         //Adding bottom elements
         bottomListAbilities.appendChild(listAbilities);
         bottomCardModalAbilities.appendChild(bottomCardModalAbilitiesTitle);

@@ -33,11 +33,17 @@ export default class mediator{
                 const {body,type} = dataComponent;
                 return CreateHtml.create({body,type});
             },
-            //Crear método para Mostrar modal y sus contenido
+            //Get Info Pokemon in Method, Create and Display Component Modal
             displayModal({pokemon}){
                 //Validar cuando no hay información para Mostar
                 const modalCardPokemon = CreateHtml.create({type:'modalPokemon',body:pokemon});
                 UI.displayPokemonModal(modalCardPokemon);
+            },
+            takeAPokemonApi({url}){
+                return Api.getAPokemon({pathPrefer: url});
+            },
+            styleInputForm({el}){
+                UI.paintInput(el);
             }
         })[type];
     };
